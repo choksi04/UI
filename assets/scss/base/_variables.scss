@@ -1,0 +1,12 @@
+// All the SCSS Variables goes here
+
+// Typography goes here
+
+$font-dancingScript: 'Dancing Script', cursive;
+$font-josefinSans: 'Josefin Sans', sans-serif;
+$font-nunito: 'Nunito', sans-serif;
+
+/* Responsiveness breakpoints */
+$breakpoints: ( "phone": 400px, "phone-wide": 480px, "phablet": 560px, "tablet-small": 640px, "tablet": 768px, "tablet-wide": 1024px, "laptop-mini": 1248px, "laptop": 1366px, "desktop-wide": 1440px, "desktop-xl":1600px, );
+/* -- */
+

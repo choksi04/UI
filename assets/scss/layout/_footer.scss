@@ -1,0 +1,113 @@
+// Footer styles goes here
+
+.logo {
+    font-size: 70px;
+    color: $primary;
+    width: 110px;
+    height: 110px;
+    border: 3px solid $primary;
+    border-radius: 50%;
+    margin-right: 20px;
+    text-decoration: none;
+    @include flexLayout;
+}
+.main-name {
+    font-family: $font-nunito;
+    font-size: 50px;
+    color: $secondary;
+    @include textStyles;
+}
+.sub-name {
+    font-family: $font-josefinSans;
+    font-size: 18px;
+    color: $secondary;
+    text-align: center;
+    @include textStyles;
+}
+
+.footer {
+    padding: 70px 0;
+    @include flexLayout;
+    flex-direction: column;
+
+    &-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 70px;
+    }
+
+    .social-media {
+        display: flex;
+        width: 300px;
+        justify-content: space-between;
+        margin-bottom: 70px;
+
+        &-item {
+            list-style: none;
+        }
+
+        &-link {
+            text-decoration: none;
+            font-size: 50px;
+            color: $secondary;
+            transition: color .7s ease-in-out;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+
+    &-copyright-paragraph {
+        font-family: $font-josefinSans;
+        font-size: 18px;
+        color: $secondary;
+        @include textStyles(capitalize);
+    }
+}
+
+@include breakpoint("tablet-wide", max) {
+    .logo {
+        font-size: 50px;
+        width: 90px;
+        height: 90px;
+    }
+    .main-name {
+        font-size: 40px;
+    }
+    .footer {
+        .social-media {
+            &-link {
+                font-size: 35px;
+            }
+        }
+        &-copyright-paragraph {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+    }
+    
+}
+
+@include breakpoint("phablet", max) {
+    .logo {
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        border-width: 2px;
+    }  
+    
+    .footer {
+        padding: 40px 0;
+        .social-media {
+            width: 200px;
+            margin-bottom: 40px;
+            &-link {
+                font-size: 25px;
+            }
+        }
+        &-copyright-paragraph {
+            font-size: 14px;
+        }
+    }
+}

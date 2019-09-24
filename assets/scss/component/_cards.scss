@@ -1,0 +1,110 @@
+// Card styles goes here
+.gallery {
+    .cards-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.card {
+    width: 33.3333%;
+    height: 30vw;
+    position: relative;
+    overflow: hidden;
+    &:hover .card-overlay {
+        left: 0;
+    }
+    &-overlay {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        background-color: rgba($primary, .6);
+        color: $light;
+        z-index: 10;
+        @include flexLayout;
+        flex-direction: column;
+        @extend %fullSpace;
+        transition: left .7s ease-in-out;
+        &-heading {
+            font-family: $font-nunito;
+            font-size: 50px;
+            @include textStyles(capitalize);
+        }
+        &-paragraph {
+            font-family: $font-josefinSans;
+            font-size: 30px;
+            margin-bottom: 30px;
+            @include textStyles(capitalize);
+        }
+        &-btn {
+            font-family: $font-josefinSans;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            width: 150px;
+            height: 40px;
+            color: $primary;
+            background-color: $light;
+            border: 1px solid $primary;
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+    &-img {
+        object-fit: cover;
+        opacity: .5;
+        @extend %fullSpace;
+    }
+}
+
+@include breakpoint("tablet-wide", max) {
+    .card {
+        &-overlay {
+            &-heading {
+                font-size: 35px;
+            }
+            &-paragraph {
+                font-size: 20px;
+            }
+            &btn {
+               font-size: 12px;
+               width: 130px;
+               height: 30px; 
+            }
+        }
+    }
+}
+
+@include breakpoint("tablet-small", max) {
+    .card {
+        &-overlay {
+            &-heading {
+                font-size: 25px;
+            }
+            &-paragraph {
+                font-size: 15px;
+            }
+            &-btn {
+                font-size: 10px;
+                width: 100px;
+                height: 30px;
+            }
+        }
+        
+    }
+}
+
+@include breakpoint("phablet", max) { 
+    .card {
+        &-overlay {
+            &-heading {
+                display: none;
+            }
+            &-paragraph {
+                display: none;
+            }
+        }
+    }
+}

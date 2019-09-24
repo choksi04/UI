@@ -1,0 +1,285 @@
+/* 
+   Brand Logo and header
+*/
+.header {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba($black, .8), rgba($black, .6)),url(/assets/images/bg.jpeg) center no-repeat;
+    background-size: cover;
+    .brand {
+        display: flex;
+        align-items: center;
+        @include centering(15%);
+        .logo {
+            font-size: 70px;
+            color: $primary;
+            width: 110px;
+            height: 110px;
+            border: 3px solid $primary;
+            border-radius: 50%;
+            margin-right: 20px;
+            text-decoration: none;
+            @include flexLayout;
+        }
+        .main-name {
+            font-family: $font-nunito;
+            font-size: 50px;
+            color: $secondary;
+            @include textStyles;
+        }
+        .sub-name {
+            font-family: $font-josefinSans;
+            font-size: 18px;
+            color: $secondary;
+            text-align: center;
+            @include textStyles;
+        }
+    }
+    &-banner {
+        text-align: center;
+        @include centering(50%);
+    }
+}
+
+// hamburger 
+
+.hamburger-menu {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    z-index: 300;
+    
+    .menu {
+        @extend %fullSpace;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        cursor: pointer;
+        transition: transform .5s;
+
+        &-line {
+            width: 100%;
+            height: 4px;
+            background-color: $primary;
+            transform-origin: right; 
+            transition: all .5s .5s;
+        }
+    }
+}
+
+// navigation
+
+.navbar {
+    position: relative;
+    z-index: 200;
+    &-navigation {
+        display: flex;
+
+        &-left {
+            position: fixed;
+            left: -50vw;
+            width: 50vw;
+            height: 100vh;
+            background-color: $dark;
+            transition: left .8s cubic-bezier(1, 0, 0, 1); 
+
+            .left-img {
+                position: absolute;
+                width: 50%;
+                box-shadow: 0 15px 60px rgba($black, .4);
+                opacity: .7;
+                border-radius: 10px;
+            }
+            .left-img-1 {
+                top: 15%;
+                left: 15%;
+            }
+
+            .left-img-2 {
+                top: 35%;
+                left: 25%;
+            }
+
+            .left-img-3 {
+                top: 55%;
+                left: 35%;
+            }
+        }
+
+        &-right {
+            position: fixed;
+            right: -50vw;
+            width: 50vw;
+            height: 100vh;
+            background-color: $darken;
+            transition: right .8s cubic-bezier(1, 0, 0, 1); 
+            @include flexLayout;
+        }
+
+        .nav-list {
+            &-item {
+                list-style: none;
+            }
+
+            &-link {
+                font-family: $font-dancingScript;
+                font-size: 50px;
+                @include textStyles(capitalize);
+                color: $secondary;
+                text-decoration: none;
+                display: block;
+                margin: 20px;
+                text-align: center;
+                transition: all .5s ease-in-out;
+
+                &:hover {
+                    color: $primary;
+                    letter-spacing: 4px;
+                }
+            }
+        }
+    }
+}
+
+
+// checkbox
+.checkbox:checked {
+    ~.navbar-navigation .navbar-navigation-left {
+        left: 0;
+    }
+    
+    ~.navbar-navigation .navbar-navigation-right {
+        right: 0;
+    }
+
+    ~.hamburger-menu {
+        .menu {
+            transform: rotateZ(90deg);
+        }
+
+        .menu-line-1 {
+            transform: rotateZ(-40deg);
+        }
+
+        .menu-line-2 {
+            opacity: 0;
+        }
+
+        .menu-line-3 {
+            transform: rotateZ(40deg);
+        }
+    }
+}
+
+@include breakpoint("laptop", max) {
+    .navbar {
+        &-navigation {
+            &-left {
+                .left-img {
+                   width: 55%; 
+                }
+
+                .left-img-1 {
+                    left: 5%
+                }
+
+                .left-img-2 {
+                    left: 15% 
+                }
+
+                .left-img-3 {
+                    left: 25%
+                }
+            }
+        }
+        
+    }
+}
+
+@include breakpoint("tablet-wide", max) {
+    .header {
+        .brand {
+            .logo {
+                font-size: 50px;
+                width: 90px;
+                height: 90px;
+            }
+        }
+    }
+    .navbar {
+        &-navigation {
+            &-left {
+                .left-img {
+                   width: 65%; 
+                }
+            }
+        } 
+    }
+    .hamburger-menu {
+        width: 35px;
+        height: 35px;
+        .menu {
+            &-line {
+                height: 3px;
+            }
+        }
+    }
+}
+
+@include breakpoint("tablet", max) {
+    .navbar {
+        &-navigation {
+            &-left {
+                display: none;
+            }
+            &-right {
+                width: 100vw;
+                right: -100vw;
+            }
+        } 
+    }
+}
+
+@include breakpoint("phablet", max) {
+    .header {
+        .brand {
+            @include centering(12%);
+            .logo {
+                font-size: 30px;
+                width: 50px;
+                height: 50px;
+                border-width: 2px;
+            }
+            .main-name {
+                font-size: 20px;
+                text-align: center;
+            }
+            .sub-name {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .navbar {
+        &-navigation {
+            .nav-list {
+                &-link {
+                    font-size: 40px;
+                }
+            }
+        } 
+    }
+
+    .hamburger-menu {
+        width: 25px;
+        height: 25px;
+        .menu {
+            &-line {
+                height: 2px;
+            }
+        }
+    }
+}
